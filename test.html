@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#08090f">
+    <title>HSC 2027 Chemistry 1st Paper — রাসায়নিক পরিবর্তন</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- English: Inter + Space Grotesk -->
+    <!-- Bangla: Tiro Bangla (elegant serif) + Hind Siliguri (clean sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #08090f;
+            --bg-2: #0d0f18;
+            --surface: rgba(20, 23, 34, 0.72);
+            --surface-2: rgba(28, 32, 46, 0.85);
+            --border: rgba(148, 163, 184, 0.12);
+            --border-hover: rgba(167, 139, 250, 0.45);
+            --text: #eef2ff;
+            --muted: #94a3b8;
+            --muted-2: #64748b;
+            --accent: #a78bfa;
+            --accent-2: #38bdf8;
+            --accent-3: #f0abfc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding: 0 0 3rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            line-height: 1.6;
+        }
+
+        /* ===== Static background ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(ellipse 70% 50% at 15% 0%, rgba(56, 189, 248, 0.10), transparent 60%),
+                radial-gradient(ellipse 60% 50% at 90% 100%, rgba(167, 139, 250, 0.12), transparent 60%),
+                linear-gradient(180deg, #08090f 0%, #0a0c15 100%);
+        }
+
+        /* Subtle grain */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+            opacity: 0.035;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 0 1.2rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .brand-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+            animation: softPulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(0.85); }
+        }
+
+        .top-tag {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background: rgba(20, 23, 34, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 0 3rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            background: rgba(167, 139, 250, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            color: #c4b5fd;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+        }
+
+        .badge i { color: var(--accent-3); font-size: 0.75rem; }
+
+        /* Bangla title — Tiro Bangla */
+        .hero-title {
+            font-family: 'Tiro Bangla', 'Hind Siliguri', 'Kalpurush', Arial, serif;
+            font-weight: 400;
+            font-size: clamp(1.4rem, 5.5vw, 3.6rem);
+            line-height: 1.45;
+            letter-spacing: 0;
+            margin: 0 auto 1.2rem;
+            max-width: 900px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 40%, #a78bfa 75%, #f0abfc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            word-break: break-word;
+            text-wrap: balance;
+            padding-bottom: 6px;
+            overflow: visible;
+        }
+
+        .hero-title .quote-mark {
+            color: var(--accent-3);
+            font-size: 1.15em;
+            line-height: 0;
+            vertical-align: -0.15em;
+            opacity: 0.55;
+        }
+
+        .hero-sub {
+            font-family: 'Hind Siliguri', 'Kalpurush', Arial, sans-serif;
+            font-size: clamp(0.9rem, 2.6vw, 1.1rem);
+            color: var(--muted);
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .hero-sub strong {
+            color: #c4b5fd;
+            font-weight: 600;
+        }
+
+        .hero-line {
+            width: 60px;
+            height: 2px;
+            margin: 1.8rem auto 0;
+            border-radius: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.7;
+        }
+
+        /* ===== FULL WIDTH THUMBNAIL — NO CROP ===== */
+        .hero-thumb {
+            position: relative;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            background: #0d0f18;
+            border: 1px solid rgba(167, 139, 250, 0.22);
+            box-shadow:
+                0 40px 80px -30px rgba(0, 0, 0, 0.9),
+                0 0 60px -20px rgba(167, 139, 250, 0.35);
+            transition: box-shadow 0.6s ease, border-color 0.6s ease;
+        }
+
+        .hero-thumb:hover {
+            border-color: rgba(167, 139, 250, 0.45);
+            box-shadow:
+                0 50px 100px -30px rgba(0, 0, 0, 0.95),
+                0 0 80px -15px rgba(167, 139, 250, 0.5);
+        }
+
+        /* Image — full visible, no crop */
+        .hero-thumb img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background: #0d0f18;
+        }
+
+        .hero-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                rgba(8, 9, 15, 0) 55%,
+                rgba(8, 9, 15, 0.55) 80%,
+                rgba(8, 9, 15, 0.92) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(1.1rem, 3.5vw, 2.2rem);
+            pointer-events: none;
+        }
+
+        .hero-thumb-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            align-self: flex-start;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            background: rgba(8, 9, 15, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(167, 139, 250, 0.35);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c4b5fd;
+            margin-bottom: 0.7rem;
+        }
+
+        .hero-thumb-badge i {
+            font-size: 0.55rem;
+            color: #ef4444;
+            animation: softPulse 1.8s ease-in-out infinite;
+        }
+
+        .hero-thumb-title {
+            font-family: 'Tiro Bangla', 'Hind Siliguri', serif;
+            font-weight: 400;
+            font-size: clamp(1.15rem, 3.5vw, 2rem);
+            color: #ffffff;
+            line-height: 1.5;
+            margin-bottom: 0.7rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+            padding-bottom: 3px;
+        }
+
+        .hero-thumb-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 1.4rem;
+            font-size: clamp(0.75rem, 2.1vw, 0.88rem);
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .hero-thumb-meta .dev {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #e0f2fe;
+        }
+
+        .hero-thumb-meta .dev i { color: var(--accent); font-size: 0.9rem; }
+
+        .hero-thumb-meta .count {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .hero-thumb-meta .count i { color: var(--accent-2); font-size: 0.9rem; }
+
+        /* ===== SECTION HEADER ===== */
+        .section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.6rem;
+            flex-wrap: wrap;
+        }
+
+        .section-head h2 {
+            font-family: 'Hind Siliguri', 'Kalpurush', Arial, sans-serif;
+            font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+            font-weight: 600;
+            letter-spacing: 0;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.7;
+        }
+
+        .section-head h2::before {
+            content: '';
+            width: 4px;
+            height: 22px;
+            border-radius: 4px;
+            background: linear-gradient(180deg, var(--accent-2), var(--accent));
+        }
+
+        .section-count {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background: rgba(20, 23, 34, 0.5);
+        }
+
+        /* ===== GRID ===== */
+        .lecture-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .lecture-card {
+            position: relative;
+            border-radius: 18px;
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            padding: 1.3rem 1.2rem 1.15rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(18px);
+            transition:
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.55s ease,
+                border-color 0.35s ease,
+                background 0.35s ease,
+                box-shadow 0.5s ease;
+        }
+
+        .lecture-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Top gradient line on hover */
+        .lecture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-2), var(--accent), var(--accent-3));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lecture-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            background: var(--surface-2);
+            box-shadow:
+                0 24px 50px -18px rgba(167, 139, 250, 0.35),
+                0 0 0 1px rgba(167, 139, 250, 0.08);
+        }
+
+        .lecture-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Card head */
+        .card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            gap: 10px;
+        }
+
+        .lecture-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        /* ✅ FIXED: num-badge — বাংলা সংখ্যা পুরো দেখাবে */
+        .num-badge {
+            width: 46px;
+            height: 46px;
+            min-width: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(167, 139, 250, 0.14));
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            font-family: 'Hind Siliguri', 'Kalpurush', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            line-height: 1;
+            padding: 6px 4px 8px;
+            color: #e0f2fe;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: visible;
+            text-align: center;
+        }
+
+        .lecture-card:hover .num-badge {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.35), rgba(56, 189, 248, 0.35));
+            border-color: rgba(167, 139, 250, 0.55);
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        /* ✅ FIXED: lecture-label */
+        .lecture-label {
+            font-family: 'Hind Siliguri', 'Kalpurush', Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--muted);
+            letter-spacing: 0.3px;
+            line-height: 1.9;
+            padding-bottom: 2px;
+            overflow: visible;
+        }
+
+        .play-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            font-size: 0.8rem;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lecture-card:hover .play-icon {
+            background: rgba(239, 68, 68, 0.9);
+            color: #ffffff;
+            transform: scale(1.08);
+            border-color: transparent;
+        }
+
+        /* ✅ FIXED: lecture-card-title */
+        .lecture-card-title {
+            font-family: Arial, sans-serif;
+            font-size: clamp(1rem, 3.1vw, 1.1rem);
+            font-weight: 500;
+            color: #e8edf8;
+            margin-bottom: 1.15rem;
+            line-height: 1.9;
+            letter-spacing: 0.1px;
+            overflow: visible;
+            padding-bottom: 3px;
+        }
+
+        /* Card button */
+        .lecture-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0.85rem 1rem;
+            min-height: 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 0.4px;
+            background: rgba(15, 18, 30, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: auto;
+        }
+
+        .lecture-link i {
+            color: #ef4444;
+            font-size: 1.05rem;
+            transition: all 0.4s ease;
+        }
+
+        .lecture-link .btn-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .lecture-link span,
+        .lecture-link i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lecture-card:hover .lecture-link {
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0 12px 28px -10px rgba(167, 139, 250, 0.55);
+            transform: translateY(-1px);
+        }
+
+        .lecture-card:hover .lecture-link .btn-bg {
+            opacity: 1;
+        }
+
+        .lecture-card:hover .lecture-link i {
+            color: #ffffff;
+        }
+
+        .lecture-link:active {
+            transform: scale(0.985);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 4rem;
+            padding: 2.2rem 0 1rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .footer-dev {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.55rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(20, 23, 34, 0.6);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            backdrop-filter: blur(10px);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            color: #e0f2fe;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .footer-dev:hover {
+            border-color: rgba(167, 139, 250, 0.55);
+            transform: translateY(-2px);
+        }
+
+        .footer-dev i {
+            color: var(--accent);
+            font-size: 0.7rem;
+        }
+
+        .footer-copy {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: var(--muted-2);
+            letter-spacing: 0.3px;
+            line-height: 1.7;
+        }
+
+        .footer-copy i {
+            color: #ef4444;
+            font-size: 0.7rem;
+            margin: 0 2px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .container { padding: 0 0.9rem; }
+            .hero { padding: 1.5rem 0 2rem; }
+            .hero-thumb { border-radius: 16px; margin-bottom: 2rem; }
+            .hero-thumb-overlay { padding: 1rem 1rem 1.1rem; }
+            .top-tag { display: none; }
+        }
+
+        @media (max-width: 360px) {
+            .lecture-card { padding: 1.1rem 1rem 0.95rem; border-radius: 16px; }
+            .num-badge {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+                font-size: 0.98rem;
+                padding: 5px 3px 7px;
+            }
+            .lecture-link { font-size: 0.86rem; }
+        }
+
+        @media (min-width: 700px) {
+            .container { padding: 0 2rem; }
+            .lecture-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 1.2rem;
+            }
+            .lecture-card { padding: 1.5rem 1.4rem 1.3rem; border-radius: 20px; }
+        }
+
+        @media (min-width: 1024px) {
+            .lecture-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 1.4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .lecture-card { opacity: 1; transform: none; }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #08090f; }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3142;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Top bar -->
+        <div class="top-bar">
+            <div class="brand">
+                <span class="brand-dot"></span>
+                <span>HSC 2027 · Chemistry</span>
+            </div>
+            <div class="top-tag">Chapter 04</div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="badge">
+                <i class="fas fa-circle"></i>
+                Premium Lecture Series
+            </div>
+
+            <h1 class="hero-title">
+                <span class="quote-mark">“</span>কিরে সাজ্জাদ, ভালোই তো প্রেম করতাসো, সিলেবাস শেষ হইসে তোমার?<span class="quote-mark">”</span>
+            </h1>
+
+            <p class="hero-sub">
+                <strong>রাসায়নিক পরিবর্তন</strong> · সম্পূর্ণ অধ্যায়ের <strong>২৩টি</strong> প্রিমিয়াম ক্লাস
+            </p>
+
+            <div class="hero-line"></div>
+        </div>
+
+        <!-- Full-width thumbnail — no crop -->
+        <div class="hero-thumb">
+            <img src="thumbail.png" alt="Course Thumbnail" loading="lazy"
+                 onerror="this.src='https://placehold.co/1600x900/0d0f18/a78bfa?text=Chemistry+1st+Paper'">
+            <div class="hero-thumb-overlay">
+                <div class="hero-thumb-badge">
+                    <i class="fas fa-circle"></i> Now Streaming
+                </div>
+                <div class="hero-thumb-title">রাসায়নিক পরিবর্তন</div>
+                <div class="hero-thumb-meta">
+                    <div class="dev">
+                        <i class="fas fa-code"></i>
+                        Md Jobayer Ahmed Sarker
+                    </div>
+                    <div class="count">
+                        <i class="fas fa-play-circle"></i>
+                        23 Lectures
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section head -->
+        <div class="section-head">
+            <h2>সকল ক্লাস</h2>
+            <div class="section-count">23 Lectures</div>
+        </div>
+
+        <!-- Grid -->
+        <div class="lecture-grid" id="lectureGrid"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-logo">Chemistry 1st Paper</div>
+                <div class="footer-dev">
+                    <i class="fas fa-circle"></i>
+                    Developed by Md Jobayer Ahmed Sarker
+                </div>
+                <div class="footer-copy">
+                    © 2025 HSC 2027 Chemistry · All rights reserved · Crafted with <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const youtubeLinks = [
+            "https://youtu.be/7pGNuLovesM?si=2yrEwjupVyMBT84v",
+            "https://youtu.be/Hcmmses_0J0?si=TLxc9CuXPdMsICYh",
+            "https://youtu.be/9XjfV_m47Cs?si=racUVGSgIQmLBNG0",
+            "https://youtu.be/k065ryH96EY",
+            "https://youtu.be/c1GAqQ_kohA",
+            "https://youtu.be/djW1k4za1wU?si=15rW49d_BSAmvnBi",
+            "https://youtu.be/aFu5NHdeWzA?si=MH-P49EMb0Nlxt1M",
+            "https://youtu.be/fF1s5Y-8pn8",
+            "https://youtu.be/V2B611T7P0w?si=VQolDwKOZoAhRLW5",
+            "https://youtu.be/oXfXPP6Zpgg?si=yWJ8m3J_OGXtkCZ1",
+            "https://youtu.be/gvRHhoRg08k?si=rTyPn8RIb4c082h8",
+            "https://youtu.be/o6f3kfZ_QvM?si=vsnVjR7OLOxgW_hS",
+            "https://youtu.be/Lpy1ssit2Eg?si=Ia11dXfZ5Sw4Gbc3",
+            "https://youtu.be/mUYEjxASEqY",
+            "https://youtu.be/eX1GDB2LOQg?si=5iZ-lyvoCsk1MQbd",
+            "https://www.youtube.com/watch?v=lQ0Z_e4YjrA&feature=youtu.be",
+            "https://youtu.be/KJi0aRRcJ0A",
+            "https://youtu.be/y4ytGpRl77w",
+            "https://youtu.be/DgV1sHV2A-A",
+            "https://youtu.be/1WtQw0Ve56Q",
+            "https://youtu.be/cRzXDiRrcxE",
+            "https://youtu.be/tex59VuSgoE",
+            "https://youtu.be/7ukI0GVXHEg"
+        ];
+
+        // বাংলা সংখ্যা কনভার্টার
+        const toBangla = (n) => {
+            const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+            return String(n).split('').map(d => bn[+d]).join('');
+        };
+
+        const grid = document.getElementById('lectureGrid');
+        const fragment = document.createDocumentFragment();
+
+        youtubeLinks.forEach((link, index) => {
+            const num = index + 1;
+            const numBn = toBangla(num);
+
+            const card = document.createElement('div');
+            card.className = 'lecture-card';
+
+            card.innerHTML = `
+                <div class="card-head">
+                    <div class="lecture-number">
+                        <div class="num-badge">${numBn}</div>
+                        <div class="lecture-label">ক্লাস ${numBn}</div>
+                    </div>
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="lecture-card-title">রাসায়নিক পরিবর্তন — পর্ব ${numBn}</div>
+                <a href="${link}" target="_blank" rel="noopener noreferrer" class="lecture-link">
+                    <span class="btn-bg"></span>
+                    <i class="fab fa-youtube"></i>
+                    <span>Watch Now</span>
+                </a>
+            `;
+
+            fragment.appendChild(card);
+        });
+
+        grid.appendChild(fragment);
+
+        // ===== Scroll reveal =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const idx = Array.from(grid.children).indexOf(el);
+                    el.style.transitionDelay = Math.min(idx * 25, 250) + 'ms';
+                    el.classList.add('reveal');
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.lecture-card').forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
